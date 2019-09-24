@@ -26,7 +26,7 @@
 
 ---
 
-### $Function$
+### Function
 
 함수는 뒤에 매개변수를 가질때 콜론을 붙여준다. 
 
@@ -44,7 +44,7 @@ UInfo.0 , UInfo.1 ...이런식으로 사용가능하다
 
 ---
 
-#### $Closure$ - 익명함수
+#### Closure - 익명함수
 
 ### 일급함수
 
@@ -81,7 +81,7 @@ ex) let fn1 = foo(base: 5)
 
 ---
 
-#### $Property$
+#### Property
 
 저장 프로퍼티와 연산 프로퍼티 두 종류가 있다.
 
@@ -150,7 +150,7 @@ class let/var 프로퍼티명 : 타입 {
 
 ---
 
-#### $Up / Down Casting $
+#### Up / Down Casting 
 
 업 캐스팅
 
@@ -175,7 +175,7 @@ case east, west
 
 ---
 
-## $UI$
+## UI
 
 * UIScreen - 기기에 연결되는 물리적인 화면을 정의하는 객체
 * UIWindow - 화면 그리기 지원 도구를 제공하는 객체
@@ -240,7 +240,7 @@ ud.set(self.interval.text, forkey: "interval")
 
 ---
 
-## $Delegate Pattern$
+## Delegate Pattern
 
 하나의 객체가 모든 일을 처리하는 것이 아니라 처리해야 할 일 중 일부를 다른 객체에 넘기는 것을 의미.
 
@@ -288,7 +288,7 @@ cell.textLabel?.text = row.title
 
 ---
 
-$viewWithTag$
+viewWithTag
 
 ---
 
