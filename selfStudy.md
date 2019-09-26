@@ -373,3 +373,191 @@ self.tableView.delegate = self
 
 ---
 
+##### iOS 화면 표현구조
+
+- 윈도우 - iOS에서 디바이스의 스크린을 빈틈없이 채우기 위한 객체. 항상 유저 인터페이스 표현 계층의 최상위에 위치. 뷰의 일종이지만 직접 콘텐츠를 가지지는 않으며 콘텐츠를 가진 뷰를 내부에 배치하여 화면에 출력하는 역할만 한다.
+- 뷰 - 콘텐츠를 담아 스크린 상에 표시하고, 사용자의 입력에 반응하는 객체. 윈도우와 뷰 사이에는 뷰 컨트롤러를 통해 연결. 뷰 컨트롤러는 뷰의 계층을 관리하여 윈도우에 전달하고, 모바일 디바이스에서 감지된 터치 이벤트를 윈도우로부터 전달받아 처리하는 역할을 한다. 투명 필름이라고 생각하자. 뷰라는 투명 필름위에 콘텐츠나 서브 뷰를 올려놓는다.
+
+------
+
+##### 뷰 컨트롤러 
+
+- 뷰 컨트롤러 - 앱의 근간을 이루는 객체로, 모든 앱은 적어도 하나 이상의 뷰 컨트롤러로 구성된다. 주된 역할은 화면을 구성하는 요소인 뷰를 관리하는 것이지만 단순히 여기서 그치지 않고 화면과 데이터 사이의 상호작용을 관리하는 역할까지 담당한다. 
+
+##### 콘텐츠 뷰 컨트롤러
+
+- UITableVIewController, UICollectionVIewController, UIScrollVIewController, UIVIewController가 있다.
+- 화면에 표현할 콘텐츠를 관리하는 컨트롤러다. 기본 클래스는 UIViewController이다. 
+
+##### 컨테이너 뷰 컨트롤러
+
+- 뷰컨과 뷰컨의 연결 관계를 관리하는 컨트롤러이다. 
+
+------
+
+##### addSubView(_:)
+
+- 인자값으로 입력된 객체의 슈퍼 뷰에 추가해주는 역할이다. 원하는 객체를 화면에 배치하려면 이 메소드를 사용해야한다. 
+
+------
+
+##### CGPoint, CGSize,CGRect 구조체
+
+- CGPoint - 위치를 나타낼 때 사용.
+- CGSize - 크기를 표현할 때 사용.
+- CGRect - CGPoint, CGSize만으론 위치와 크기를 동시에 가지는 객체의 정보를 표현하기엔 충분하지 않다. 2차원 좌표에서 네가지 값을 사용하여 직사각형의 위치와 크기를 표현하는 구조체이다. 
+
+------
+
+##### Frame, Bounds 속성
+
+- frame은 뷰의 위치와 크기를 지정하는데 사용되는 속성. 
+
+```swift
+view.frame = CGRect(x:50, y: 70, width: 90, height: 130)
+```
+
+- frame의 좌표 기준은 슈퍼 뷰이다. 슈퍼 뷰의 기준점을 원점(0,0)으로 하여 자신을 계산한다.
+- bounds에서 좌표 기준은 자기 자신이다. 
+- Frame 속성은 뷰 자신의 위치나 크기 등 영역을 설정하는 경우에 사용한다. 
+- Bounds 속성은 뷰의 내부에 있는 객체와의 관계에서 사용한다. 
+
+------
+
+UI
+
+- button 의 타이틀을 설정할 때에는 setTitle(_:for:)메소드를 사용해야한다. 
+- 화면 전체의 너비를 읽어와 이등분한 값을 적용하고 싶을 때.
+  - btn.center = CGPoint(x: self.view.frame.size.width / 2, y: 100)
+
+*액션 메소드를 프로그래밍 방식으로 구현*
+
+##### addTarget(_:action:for:)
+
+- Target - 호출할 대상 메소드가 있는 인스턴스를 가리킨다. 액션 메소드는 보통 뷰 컨트롤러에 정의되기 때문에 target 매개변수에는 뷰 컨트롤러 인스턴스가 전달되는 경우가 대부분이며, 특히 같은 뷰 컨트롤러 내에 액션 메소드가 작성되어 있으면 self를 인자값으로 전달한다. 
+- action - 호출할 메소드를 지정하는 매개변수. 매개변수 타입은 Selector, 함수를 직접 지정하는 기능을 가진 일종의 함수 선택자로, 실제로 사용할 때에는 #selector(함수이름) 형태로 작성하면 된다. 
+- for - 실행 조건을 지정하는 매개변수. 어떤 조건을 만족했을 때 액션 메소드가 실행되도록 할 것이냐에 관한것.
+
+------
+
+##### IBOutlet 
+
+- 아울렛 변수를 사용하면 시스템은 알아서 스토리보드의 정보를 바탕으로 객체를 초기화 한다음, 이 객체에 대한 참조를 변수에 대입한다. 하지만 아울렛 변수없이 프로그래밍 방식으로 사용하면 직접 객체를 생성해 주어야한다.
+
+------
+
+##### 탭 바  컨트롤러
+
+탭 바가 활성화되는 순간에 탭에 연결된 뷰 컨트롤러의 화면을 읽어드리므로 자동으로 활동화되지않는다. 따라서 didFinish 의 메소드에 탭바 아이템의 초기화코드를 작성하는게 좋다.
+
+```swift
+ func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        
+        if let tbc = self.window?.rootViewController as? UITabBarController {
+            if let tabItems = tbc.tabBar.items {
+                tabItems[0].image = UIImage(named: "calendar")
+                tabItems[1].image = UIImage(named: "file-tree")
+                tabItems[2].image = UIImage(named: "photo")
+                
+                tabItems[0].title = "calendar"
+                tabItems[1].title = "file-tree"
+                tabItems[2].title = "photo"
+            }
+        }
+        
+        return true
+    }
+// 토글 방식의 탭바 숨기기 
+override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let tabBar = self.tabBarController?.tabBar
+        tabBar?.isHidden = (tabBar?.isHidden == true) ? false : true
+        //토글 방식의 탭바 숨기기
+    }
+```
+
+------
+
+##### 외형 프록시 객체
+
+- 화면 요소별 속성을 공통으로 적용할 수 있는 객체. 외형 프록시 객체에 속성을 설정해 두면, 해당 타입으로 생성된 모든 객체에 해당속성이 적용된다. 외형 프록시 객체는 대부분의 객체에서 appearance() 메소드를 통해 지원한다. 
+
+```swift
+UITabbar.appearance()	//탭바의 외형 프록시 객체
+UITabbar.appearance().tintColor = UIColor.white	//탭바 속성의 프록시 객체
+```
+
+------
+
+##### 앱 델리게이트 역할
+
+- UIResponder 클래스를 상속받고, UIApplicationDelegate 프로토콜을 구현해야한다.
+- 클래스 내부에는 UIWindow 타입의 변수 window가 정의 되어있어야하고 변수이름은 반드시 window어야 한다. 
+- @UIApplicationMain 어트리뷰트를 추가하여 시스템에 앱 델리게이트로 인식시키는 과정이 필요하다. @UIApplicationMain 어트리뷰트는 프로젝트 전체를 통틀어 하나의 클래스에만 지정되어야한다. 
+
+------
+
+##### 네비게이션 바 영역
+
+```swift
+// 왼쪽 오른쪽에 바 버튼 아이템 객체 생성
+let v = UIView()
+        v.frame = CGRect(x: 0, y: 0, width: 150, height: 37)
+        v.backgroundColor = .brown
+        
+        let leftItem = UIBarButtonItem(customView: v)
+        self.navigationItem.leftBarButtonItem = leftItem
+        
+let rv = UIView()
+        rv.frame = CGRect(x: 0, y: 0, width: 100, height: 37)
+        rv.backgroundColor = .brown
+        
+        let rightItem = UIBarButtonItem(customView: rv)
+        self.navigationItem.rightBarButtonItem = rightItem
+        
+```
+
+------
+
+##### 알림 컨트롤러
+
+- 뷰 컨트롤러 객체를 활용하여 알림창의 배경을 바꿀수있다.
+
+```swift
+  let v = UIViewController()
+        v.view.backgroundColor = .red
+        alert.setValue(v, forKey: "contentViewController")
+// 알림 뷰 컨트롤러에서 setValue를 활용하여 UIViewController 객체의 속성에 값을 설정하고, contentViewController 인자를 활용하여 넣어준다.
+
+```
+
+```swift
+let alert = UIAlertController(title: nil , message: "기본 메세지", preferredStyle: .alert)
+//title 을 nil로 바꾸면 해당하는 영역을 지워버린다. message도 마찬가지
+```
+
+------
+
+##### MapKit
+
+- 맵킷 프레임워크 
+- CLLocationCoordinate2D - 표시할 위치
+- MKCoordinateSpan - 맵의 축척, 지도가 보여줄 넓이
+- MKCoordinateRegion - 지도의 영역을 정의
+
+```swift
+ let point = MKPointAnnotation()
+    point.coordinate = pos
+    mapkitView.addAnnotation(point)
+//위치를 핀으로 표시해준다.
+```
+
+------
+
+##### init(coder:)
+
+- 스토리보드 방식으로 객체를 생성할 때 호출되는 초기화 메소드다. 스토리보드에서 CSButton 클래스 타입의 버튼 객체를 사용하면 이 초기화 메소드가 사용된다.
+- 스토리보드에서 사용하는 초기화 메소드는 init(coder: )로 규격화되어 있다. 
+- 멤버와이즈 초기화 메소드 - 눈에 보이지않는 자동으로 생성되는 init() 메소드이다. 저장 프로퍼티는 자동으로 생성되지만 클래스는 초기화 메소드가 제공되지 않는다. 
+
+
