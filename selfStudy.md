@@ -2,19 +2,19 @@
 
 ## iOS selfStudy
 
----
+------
 
 ### Optional
 
-* 일반 자료형은 nil을 가질수없다. 문자열이나 정수형 같은..., 대신 옵셔널 타입으로 선언된 자료형은 nil값을 저장할 수 있다. 
-* 옵셔널 타입이 실제로 가질수있는 값의 종류는 두가지다. 오류가 발생할 가능성이 있지만 실제 실행 결과에서는 오류가 발생하지 않았을때 nil이 아닌값, 실제 실행결과에서 오류 발생시 반환되는 nil값이 두번쨰.
-* 잠재적으로 오류가 발생할 가능성이 있는 상황 => 옵셔널 타입을 사용.
-* 일반 자료형을 옵셔널 타입으로 정의하는 방법 -> ?만 붙이면 된다.
+- 일반 자료형은 nil을 가질수없다. 문자열이나 정수형 같은..., 대신 옵셔널 타입으로 선언된 자료형은 nil값을 저장할 수 있다. 
+- 옵셔널 타입이 실제로 가질수있는 값의 종류는 두가지다. 오류가 발생할 가능성이 있지만 실제 실행 결과에서는 오류가 발생하지 않았을때 nil이 아닌값, 실제 실행결과에서 오류 발생시 반환되는 nil값이 두번쨰.
+- 잠재적으로 오류가 발생할 가능성이 있는 상황 => 옵셔널 타입을 사용.
+- 일반 자료형을 옵셔널 타입으로 정의하는 방법 -> ?만 붙이면 된다.
 
 > 옵셔널 해제방식은 명시적 해제와 묵시적 해제로 나뉜다. 
 
-* 명시적해제는 다시 강제적해제와 비 강제적 해제로 나뉘고
-* 묵시적해제는 컴파일러에 의한 자동해제와 !연산자를 사용한 자동해제로 나눌수있다.
+- 명시적해제는 다시 강제적해제와 비 강제적 해제로 나뉘고
+- 묵시적해제는 컴파일러에 의한 자동해제와 !연산자를 사용한 자동해제로 나눌수있다.
 
 옵셔널 강제해제는 옵셔널 타입의 변수나 상수 뒤에 !만 붙이면 된다. 강제 해제 연산자를 사용할때는 먼저 옵셔널 값이 nil인지 점검해야 한다. 
 
@@ -24,7 +24,7 @@
 
 묵시적해제는 옵셔널이지만 값을 사용하려고 할때는 자동으로 옵셔널이 해제된 값을 제공하기 때문에 굳이 ! 연산자를 사용할 필요가 없는 구문. 일반 옵셔널 타입의 변수선언시 ! 연산자를 ? 대신에 붙여주면 끝.
 
----
+------
 
 ### Function
 
@@ -42,7 +42,7 @@ UInfo.0 , UInfo.1 ...이런식으로 사용가능하다
 
 튜플 항목은 언더바를 이용하면 변수 할당없이 건너뛸수 있다.
 
----
+------
 
 #### Closure - 익명함수
 
@@ -50,11 +50,11 @@ UInfo.0 , UInfo.1 ...이런식으로 사용가능하다
 
 다음 조건을 만족해야 일급함수라고 한다.
 
-* 객체가 런타임에도 생성이 가능해야 한다.
-* 인자값으로 객체를 전달할 수 있어야 한다.
-* 반환값으로 객체를 사용할 수 있어야 한다.
-* 변수나 데이터 구조 안에 저장할 수 있어야 한다.
-* 할당에 사용된 이름과 관계없이 고유한 구별이 가능해야 한다.
+- 객체가 런타임에도 생성이 가능해야 한다.
+- 인자값으로 객체를 전달할 수 있어야 한다.
+- 반환값으로 객체를 사용할 수 있어야 한다.
+- 변수나 데이터 구조 안에 저장할 수 있어야 한다.
+- 할당에 사용된 이름과 관계없이 고유한 구별이 가능해야 한다.
 
 ###### 일급함수의 특성
 
@@ -79,7 +79,7 @@ ex) let fn1 = foo(base: 5)
 
 클로저 표현식은 func 키워드 함수명을 제외한 나머지 부분만 작성하는 경량 문법을 사용한다.
 
----
+------
 
 #### Property
 
@@ -87,11 +87,9 @@ ex) let fn1 = foo(base: 5)
 
 ##### 저장 프로퍼티
 
-* 입력된 값을 저장하거나 저장된 값을 제공하는 역할
-
-* 상수 및 변수를 사용해서 정의 가능
-
-* 클래스와 구조체에서는 사용이 가능하지만, 열거형에서는 사용할 수 없다.
+- 입력된 값을 저장하거나 저장된 값을 제공하는 역할
+- 상수 및 변수를 사용해서 정의 가능
+- 클래스와 구조체에서는 사용이 가능하지만, 열거형에서는 사용할 수 없다.
 
 클래스안에 저장 프로퍼티를 선언시 초기화 하는법
 
@@ -124,7 +122,6 @@ return 반환값
 프로퍼티의 값이 변경되었을때 프로퍼티의 값이 설정되면 무조건 호출된다.
 
 - willSet - 프로퍼티의 값이 변경되기 직전에 호출되는 옵저버
-
 - didSet - 프로퍼티의 값이 변경된 직후에 호출되는 옵저버
 
 ##### 타입 프로퍼티
@@ -148,20 +145,20 @@ class let/var 프로퍼티명 : 타입 {
 }
 ```
 
----
+------
 
 #### Up / Down Casting 
 
 업 캐스팅
 
-* 객체 as 변환할 타입
+- 객체 as 변환할 타입
 
 다운 캐스팅
 
-* 객체 as? 변환할 타입
-* 객체 as! 변환할 타입
+- 객체 as? 변환할 타입
+- 객체 as! 변환할 타입
 
----
+------
 
 ##### 열거형 정의
 
@@ -173,31 +170,35 @@ case east, west
 }
 ```
 
----
+------
 
 ## UI
 
-* UIScreen - 기기에 연결되는 물리적인 화면을 정의하는 객체
-* UIWindow - 화면 그리기 지원 도구를 제공하는 객체
-* UIView - 그리기를 수행할 객체 시트
-* UIKit - 화면 구성용 객체들이 들어있는 프레임 워크
-* AppDelegate는 앱 전체의 생명주기 관리를 위임받은 객체인 앱 델리게이트를 구현한 클래스이다. App Delegate 객체는 앱내에서 오직 하나의 인스턴스만 생성되도록 시스템적으로 보장받는다.
+- UIScreen - 기기에 연결되는 물리적인 화면을 정의하는 객체
+- UIWindow - 화면 그리기 지원 도구를 제공하는 객체
+- UIView - 그리기를 수행할 객체 시트
+- UIKit - 화면 구성용 객체들이 들어있는 프레임 워크
+  - c/c++ 에서의 #include 와 같으나 import 는 헤더 파일을 반드시 한 번만 부르도록 한다.
+  - UIKit 파일은 앱의 사용자 인터페이스를 생성하고 관리하는 기본 객체 정보를 담고있다.
+- AppDelegate는 앱 전체의 생명주기 관리를 위임받은 객체인 앱 델리게이트를 구현한 클래스이다. App Delegate 객체는 앱내에서 오직 하나의 인스턴스만 생성되도록 시스템적으로 보장받는다.
 
----
+------
+
+### AppDelegate
+
+- 앱 전체의 생명 주기 관리를 위임 받는 객체를 가진 클래스
+
+------
 
 ##### 뷰의 상태변화 
 
-* viewDidLoad() - 초기화 작업을 할때 ,로드된 직후 호출
+- viewDidLoad() - 초기화 작업을 할때 ,로드된 직후 호출
+- viewWillAppear() - 로드되기 직전에 호출
+- viewDidAppear() - 추가되어 화면이 표시되면 호출되는 메서드
+- viewWillDisappear() - 뷰가 계층에서 사라지기 직전에 호출되는 메소드
+- viewDidDisappear() - 뷰가 계층에서 사라진 후 호출되는 메소드
 
-* viewWillAppear() - 로드되기 직전에 호출
-
-* viewDidAppear() - 추가되어 화면이 표시되면 호출되는 메서드
-
-* viewWillDisappear() - 뷰가 계층에서 사라지기 직전에 호출되는 메소드
-
-* viewDidDisappear() - 뷰가 계층에서 사라진 후 호출되는 메소드
-
----
+------
 
 #### 화면 전환 기법
 
@@ -208,19 +209,31 @@ present()로 뷰 컨트롤러를 호출하면 새로운 객체가 생성되는 �
 
 네비게이션 컨트롤러에 의해 화면이 전황되었을 때 이전 화면으로 되돌아가는 메소드는 popViewController()이며, 이 메소드는 이전 화면으로 되돌아갈 때 애니메이션 처리를 할것인지 여부로 인자값으로 입력받는다. 
 
-* 매뉴얼 세그 
+- 매뉴얼 세그 
 
 자동 액션세그와 달리 수동 실행 세그웨이이다. 
 
 performSegue(withIdentifier: <세그웨이 식별자>, sender: <세그웨이 실행 객체>)
 
-* 커스텀 세그
+- 커스텀 세그
 
----
+------
 
 UserDefaults 객체
 
-UserDefaults 객체를 사용하여 값을 주고받을수 있다.
+- UserDefaults 객체를 사용하여 값을 주고받을수 있다.
+- UserDefaults는 런타임 환경에서 동작하는 객체.
+
+값을 읽어올 때 
+
+ex) string(forKey:)
+
+값을 저장할 때
+
+ex)  set(_:forKey:)
+
+- standard 속성을 통해 제공되는 표준 사용자 기본 저장소에 데이터를 저장하거나 읽기만 하면된다.
+- UserDefaults로 읽어들인 데이터는 옵셔널 타입으로 처리된다.
 
 ```swift
 let ud = UserDefaults.standard
@@ -230,15 +243,15 @@ ud.set(self.interval.text, forkey: "interval")
 //UserDefaults에 저장한 객체는 함께 저장된 키를 통해 구분된다.
 ```
 
----
+------
 
-#### 싱글톤
+#### Singleton
 
 ##### **앱 전체에서 공유될 수 있는 자원들을 캡슐화한 객체** 
 
 특정한 용도의 객체를 하나 만들어서 공통적으로 사용하고 싶을 때 사용하는 방법. 메모리낭비 방지, 데이터 공유 가능. 앱의 생명 주기 동안 하나의 인스턴스만 생성을 보장하는 클래스를 의미. 이는 단순히 하나의 인스턴스 생성을 보장하는 것이 아니라 **앱 전체에서 공유될 수 있는 자원들을 캡슐화한 객체**, 예시) UserDefault, URLSession이 있다.
 
----
+------
 
 ## Delegate Pattern
 
@@ -246,13 +259,13 @@ ud.set(self.interval.text, forkey: "interval")
 
 delegte속성은 델리게이트 메소드가 구현된 객체의 참조 정보를 저장한다.
 
----
+------
 
 #### 최초 응답자(First Responder)
 
 모바일 기기의 디스플레이에 앱의 콘텐츠를 표현하기 위해 사용하는 UIWindow 객체는 사용자 인터페이스 구조에서 사용자에 가장 가까이 위치한 객체로 사용자로부터 발생하는 터치 관련 이벤트를 내부 객체로 전달하는 역할을 담당한다.
 
----
+------
 
 #### 테이블 뷰
 
@@ -266,19 +279,19 @@ delegte속성은 델리게이트 메소드가 구현된 객체의 참조 정보�
 
 1. ##### tableView(_: numberOfRowInSection:)
 
-* 테이블 뷰가 생성해야 할 행의 개수
-* 이 메소드에 의해 테이블 뷰의 행 수가 결정되는 것.
-* 인자로 테이블 뷰의 객체 정보와 섹션정보를 전달한다. 
+- 테이블 뷰가 생성해야 할 행의 개수
+- 이 메소드에 의해 테이블 뷰의 행 수가 결정되는 것.
+- 인자로 테이블 뷰의 객체 정보와 섹션정보를 전달한다. 
 
 2. ##### tableView(_: cellForRowAt:)
 
-* 각 행이 화면에 표현해야 할 내용을 구성하는데 사용
-* 인자로 테이블 뷰의 객체 정보와 구성할 행에 대한 참조 정보를 전달한다.
+- 각 행이 화면에 표현해야 할 내용을 구성하는데 사용
+- 인자로 테이블 뷰의 객체 정보와 구성할 행에 대한 참조 정보를 전달한다.
 
 3. ##### tableView(_: didSelectRowAt:)
 
-* 특정 행을 선택했을 때 호출되는 메소드
-* dequeueReusableCell(withIdentifier:) -> 사용된 테이블 셀 인스턴스가 폐기되지 않고 재사용을 위해
+- 특정 행을 선택했을 때 호출되는 메소드
+- dequeueReusableCell(withIdentifier:) -> 사용된 테이블 셀 인스턴스가 폐기되지 않고 재사용을 위해
 
 ```swift
 let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell")!
@@ -286,11 +299,11 @@ cell.textLabel?.text = row.title
 //만약 테이블 셀의 textLabel 속성에 값이 있으면 하위 속성인 .text에 row.title 값을 대입하고, 없으면 아무것도 처리하지 않는다. -> 옵셔널 체인!
 ```
 
----
+------
 
 viewWithTag
 
----
+------
 
 UIImage(named: ) // 프로젝트 내에 있는 이미지를 읽어 객체를 생성한다.
 
@@ -299,28 +312,27 @@ var img = UIImage(named: <프로젝트 내 파일 경로>)
 //이미지의 이름뿐만 아니라 원래는 경로설정도 해줘야함.
 ```
 
----
+------
 
 ##### 테이블 뷰 의 행 높이 결정
 
 1. tableView(_: estimatedHeightForRowAt:)
 
-* 테이블 뷰에서 특정 행의 높이를 설정하고 싶을때 사용하는 메소드
-* self.tableView.rowHeight = <원하는 행 높이>
+- 테이블 뷰에서 특정 행의 높이를 설정하고 싶을때 사용하는 메소드
+- self.tableView.rowHeight = <원하는 행 높이>
 
 2. 셀프사이징 셀
 
-* estiamtedRowHeight 프로퍼티 -> 셀 전체의 높이를 결정하기 전에 임시로 사용할 셀의 높이를 나타낸다.
-* UITableViewAutomaticDimension 객체 -> rowHeight 속성에 대입되어 높이값이 동적으로 설정될 것을 테이블 뷰에 알려주는 역할을 한다.
+- estiamtedRowHeight 프로퍼티 -> 셀 전체의 높이를 결정하기 전에 임시로 사용할 셀의 높이를 나타낸다.
+- UITableViewAutomaticDimension 객체 -> rowHeight 속성에 대입되어 높이값이 동적으로 설정될 것을 테이블 뷰에 알려주는 역할을 한다.
 
----
+------
 
 ### 네트워크 통신
 
-* 소켓 방식
-
-* 비연결 지향 통신 - http등의 프로토콜. 
-* RESTful 방식
+- 소켓 방식
+- 비연결 지향 통신 - http등의 프로토콜. 
+- RESTful 방식
 
 www과 같은 분산 하이퍼 미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식. 네트워크 자원을 정의하고 자원에 대한 주소를 관리하는 방법이다. http프로토콜을 바탕으로 필요한 데이터를 별도의 규약 없이 주고받기만 하면된다.
 
@@ -330,8 +342,8 @@ RESTful 시스템은 일반적으로 서버에게 요청하려는 정보를 URI�
 
 #### XML 방식과 JSON 방식
 
-* XML 은 태그로 이루어진 마크업 형식. 대신 데이터의 용량이 커질수 있다.
-* JSON 은 자바스크립트 언어에서 객체의 속성을 표현하기 위한 방법
+- XML 은 태그로 이루어진 마크업 형식. 대신 데이터의 용량이 커질수 있다.
+- JSON 은 자바스크립트 언어에서 객체의 속성을 표현하기 위한 방법
 
 #### JSON 방식
 
@@ -341,19 +353,19 @@ JSON 객체는 {키 : 데이터} 형태로 이루어진 딕셔너리 데이터 �
 
 JSON 배열은 [ ] 형태 이다. 데이터를 파싱할 때는 JSONSerialization 객체의 jsonObject() 메소드를 사용하는것이 좋다.
 
----
+------
 
 ##### ViewController 에서 테이블 뷰를 추가하고 싶을 땐,
 
-* tableViewDataSource 와 tableViewDelegate를 상속받아 필요한 메소드를 구현해줘야한다. 
-* 클래스(*ViewController*)에 데이터 소스나 델리게이트를 사용하는 객체(*tableView*)가 추가되면 이들 객체가 필요한 메소드를 어디서 찾을수 있는지에대한 객체 참조 정보를 알려줘야한다. 
+- tableViewDataSource 와 tableViewDelegate를 상속받아 필요한 메소드를 구현해줘야한다. 
+- 클래스(*ViewController*)에 데이터 소스나 델리게이트를 사용하는 객체(*tableView*)가 추가되면 이들 객체가 필요한 메소드를 어디서 찾을수 있는지에대한 객체 참조 정보를 알려줘야한다. 
 
 ```swift
 self.tableView.dataSource = self
 self.tableView.delegate = self
 ```
 
----
+------
 
 ##### ICon size
 
@@ -365,13 +377,17 @@ self.tableView.delegate = self
 
 90 x 90 - sample@3x.png
 
----
+------
 
 ##### Auto-Resizing , Auto-Layout
 
-* 자동 크기 조절
+- 자동 크기 조절
 
----
+![page75image61698448.jpg](/Users/chokyungjin/Desktop/page75image61698448.jpg) 
+
+![page71image61645552.png](/Users/chokyungjin/Library/Application Support/typora-user-images/page71image61645552.png) 
+
+------
 
 ##### iOS 화면 표현구조
 
@@ -474,6 +490,12 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         tabBar?.isHidden = (tabBar?.isHidden == true) ? false : true
         //토글 방식의 탭바 숨기기
     }
+
+//탭바가 Didload했을 때 처음 선택되는 탭을 고르는 메소드
+self.onTabbarItemClick(self.tabItem01)
+// 탭 바에 연결된 뷰 컨트롤러를 전환할 때에는 화면 전환 코드를 작성할 필요가 없다. 단지 원하는 뷰 컨트롤러의 인덱스 번호를 탭 바 컨트롤러의 selectedIndex 속성에 할당하기만 하면 알아서 해줌.
+self.selectedIndex = sender.tag
+
 ```
 
 ------
@@ -560,4 +582,73 @@ let alert = UIAlertController(title: nil , message: "기본 메세지", preferre
 - 스토리보드에서 사용하는 초기화 메소드는 init(coder: )로 규격화되어 있다. 
 - 멤버와이즈 초기화 메소드 - 눈에 보이지않는 자동으로 생성되는 init() 메소드이다. 저장 프로퍼티는 자동으로 생성되지만 클래스는 초기화 메소드가 제공되지 않는다. 
 
+------
 
+##### ?? 연산자
+
+- ( 옵셔널 타입의 값 ) ?? (값이 nil일 때 대신 사용할 값)
+
+- (a != nil) ? a! : b
+
+- a ?? b
+
+- ###### a가 nil이면 b를, a 가 nil이 아니면 옵셔널을 해제한 a!를 리턴한다.
+
+------
+
+##### 프로필 이미지 둥글게 만드는 법
+
+```swift
+let defaultImage = UIImage(named: "account.jpg")
+        self.profileImageLabel.image = defaultImage
+        self.profileImageLabel.frame = CGRect(x: 10, y: 10, width: 50, height: 50)
+        
+        //프로필 이미지 둥글게 만들기!!!!
+        self.profileImageLabel.layer.cornerRadius = (self.profileImageLabel.frame.width / 2)
+        self.profileImageLabel.layer.borderWidth = 0
+        self.profileImageLabel.layer.masksToBounds = true
+```
+
+------
+
+### Foundation
+
+- 원시 데이터 타입 Int ,String, Dictionary 같은...
+
+### UIKit
+
+- 사용자 인터페이스 구성요소
+- SiriKit, MapKit, MessageUI
+
+------
+
+### Use Core Data
+
+- 기기 내부의 저장소에 데이터를 저장할 때 쓴느 데이터 저장을 지원하는 객체의 코어 데이터
+
+------
+
+### Main Interface
+
+- 메인스토리 보드의 이름
+
+------
+
+### TableView
+
+```swift
+ override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return super.tableView(tableView, numberOfRowsInSection: section)
+ }
+override func numberOfSections(in tableView: UITableView) -> Int {
+        return super.numberOfSections(in: tableView)
+    }
+
+// 스토리보드에 static으로 테이블 셀 개수를 설정했을때 부모 클래스에 정의된 메소드를 이용하면 테이블 뷰의 행 개수로 처리하면 된다.
+```
+
+------
+
+### UITapGestureRecognizer
+
+- 지정된 객체가 탭 되었을 때 이를 인식하고 지정된 메소드를 호출하는데, 사용자의 입장에서는 터치 이벤트의 액션 메소드 호출과 비슷하게 인식된다. 
