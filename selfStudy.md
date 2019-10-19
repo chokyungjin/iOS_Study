@@ -652,3 +652,37 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 ### UITapGestureRecognizer
 
 - 지정된 객체가 탭 되었을 때 이를 인식하고 지정된 메소드를 호출하는데, 사용자의 입장에서는 터치 이벤트의 액션 메소드 호출과 비슷하게 인식된다. 
+
+---
+### Data_Send
+
+```swift
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let destination = segue.destination	
+   //세그에 대한 목적지
+        let button = sender as! UIButton	
+   // 센더에 대한 옵셔널 강제 해제.(어차피 버튼이니까 강제로 해제해줘도 괜찮다)
+        destination.title = button.titleLabel?.text 
+   //데이터가 전달된 다음 화면의 네비게이션 바 설정
+```
+    }
+Stepper
+
+counting 되는값은 Value 프로퍼티로 접근 가능.
+Stepper.Value의 리턴 값은 Double.
+또한 Stepper의 Minimum, Maximum, Step을 직접 설정할 수 있다.
+StackView
+
+```swift
+    @IBOutlet weak var stackViewCenterY: NSLayoutConstraint!
+//이번에 Constraint를 IBOutlet으로 연결하는걸 배웠는데 정말 꿀팁인듯하다.
+ UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve), animations: {
+            
+            self.logoImageView.alpha = 0
+            
+            // +로 갈수록 y값이 내려가고 -로 갈수록 y값이 올라간다.
+            self.stackViewCenterY.constant = -keyboardHeight/2 + 50
+        })
+//스택뷰 CenterY 잡아와서 constant 계산
+```
