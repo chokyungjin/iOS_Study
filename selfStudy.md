@@ -686,3 +686,34 @@ StackView
         })
 //스택뷰 CenterY 잡아와서 constant 계산
 ```
+
+---
+
+### Data Formatting
+
+```swift
+//Data Formatting
+@IBAction func buttonTap(_ sender: UIButton) {            
+        if userIsInTheMiddleOfTyping {
+            //텍스트 필드에 보여주기위한 string input
+            input.append(sender.currentTitle!)
+            //print(input)
+            //실제 계산에 들어가는 string real
+            real.append(sender.currentTitle!)
+            formatNumber(input: input)
+          //여기서 input 값을 formatting으로 변환하고 resultLabel에 넣어줌
+            input = "" 
+        } else {
+            //처음 텍스트에 아무것도 없을 때의logic
+            input.append(sender.currentTitle!)
+            resultLabel.text = input
+            input = ""
+        }
+        //뒤에 string 으로 인식하기 위해 true로 설정
+        userIsInTheMiddleOfTyping = true
+        
+    }
+```
+
+
+
