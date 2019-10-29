@@ -665,8 +665,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
    // 센더에 대한 옵셔널 강제 해제.(어차피 버튼이니까 강제로 해제해줘도 괜찮다)
         destination.title = button.titleLabel?.text 
    //데이터가 전달된 다음 화면의 네비게이션 바 설정
+ } 
 ```
-    }
 Stepper
 
 counting 되는값은 Value 프로퍼티로 접근 가능.
@@ -717,3 +717,50 @@ StackView
 
 
 
+---
+
+### tabBar delegate
+
+```swift
+ override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+       print( self.selectedIndex)
+        if self.selectedIndex == 1 {
+            self.navigationController?.navigationBar.topItem?.title = "BoxOffice"
+              }
+        else if self.selectedIndex == 2{
+            self.navigationController?.navigationBar.topItem?.title = "My Diary"
+        }
+        else if self.selectedIndex == 3{
+            self.navigationController?.navigationBar.topItem?.title = "Recommend"
+        }
+        else {
+            self.navigationController?.navigationBar.topItem?.title = "Home"
+        }
+        
+    }
+//tabBar didSelect 메소드에서 작성하면 탭바는 뷰 컨트롤러와 작용하는게 아니라 네비게이션 컨트롤러와 작용한다.
+
+```
+```swift
+func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print( self.selectedIndex)
+               if self.selectedIndex == 1 {
+                   self.navigationController?.navigationBar.topItem?.title = "BoxOffice"
+                
+                     }
+               else if self.selectedIndex == 2{
+                   self.navigationController?.navigationBar.topItem?.title = "My Diary"
+               }
+               else if self.selectedIndex == 3{
+                   self.navigationController?.navigationBar.topItem?.title = "Recommend"
+               }
+               else {
+                   self.navigationController?.navigationBar.topItem?.title = "Home"
+               }
+         
+    }
+//UITabBarControllerDelegate를 선언하고 tabBarController의 didSelect를 해서 뷰 컨트롤러 와 탭바의  작용을 할 수 있게 한다. 그리고 delegate = self 해줄것
+```
+
+* UIViewController의 프로퍼티에 navigationController ,tabBarController가 있다.
