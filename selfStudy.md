@@ -764,3 +764,18 @@ func tabBarController(_ tabBarController: UITabBarController, didSelect viewCont
 ```
 
 * UIViewController의 프로퍼티에 navigationController ,tabBarController가 있다.
+
+---
+
+* StackView,  Ratio Setting 
+  * 계산기 화면 구현시 네 개의 Vertical 스택뷰에 Horizontal 스택뷰를 각각 추가하여 구성한다.
+
+> ##### 각 버튼을 ratio 를 1:1로 주면 width , height 을 일정한 비율로 설정할 수 있다.
+>
+> ##### 버튼 4개를 품은 스택 뷰는 Horizontal , Distribution은 Fill Equally, Spacing 은 10으로 설정.
+>
+> ##### 스택 뷰 4개를 품은 root 스택 뷰는 Vertical , Distribution은 Fill, Spacing 은 10으로 설정.
+>
+> ##### cf) ÷ 기호는 영문으로 바꾸고 option + / 동시에 누르면 나옴!
+
+<img width="300" alt="스크린샷 2019-10-22 오후 2 16 17" src="https://user-images.githubusercontent.com/46750574/67260598-20fb5900-f4d7-11e9-92c8-54f11b73401c.png">
