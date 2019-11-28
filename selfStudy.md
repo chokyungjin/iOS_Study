@@ -779,3 +779,12 @@ func tabBarController(_ tabBarController: UITabBarController, didSelect viewCont
 > ##### cf) ÷ 기호는 영문으로 바꾸고 option + / 동시에 누르면 나옴!
 
 <img width="300" alt="스크린샷 2019-10-22 오후 2 16 17" src="https://user-images.githubusercontent.com/46750574/67260598-20fb5900-f4d7-11e9-92c8-54f11b73401c.png">
+
+---
+
+* Custom Top Tabbar
+  * import XLPagerTabStrip
+  * buttonBarView, pagerTabeController에 child controller 삽입 시켜줌!
+
+* Custom Hamburger Menu 
+  * import SWRevealViewController.h 
