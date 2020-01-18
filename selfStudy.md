@@ -243,10 +243,6 @@ ud.set(self.interval.text, forkey: "interval")
 //UserDefaults에 저장한 객체는 함께 저장된 키를 통해 구분된다.
 ```
 
-------
-
-#### Singleton
-
 ##### **앱 전체에서 공유될 수 있는 자원들을 캡슐화한 객체** 
 
 특정한 용도의 객체를 하나 만들어서 공통적으로 사용하고 싶을 때 사용하는 방법. 메모리낭비 방지, 데이터 공유 가능. 앱의 생명 주기 동안 하나의 인스턴스만 생성을 보장하는 클래스를 의미. 이는 단순히 하나의 인스턴스 생성을 보장하는 것이 아니라 **앱 전체에서 공유될 수 있는 자원들을 캡슐화한 객체**, 예시) UserDefault, URLSession이 있다.
@@ -785,6 +781,32 @@ func tabBarController(_ tabBarController: UITabBarController, didSelect viewCont
 * Custom Top Tabbar
   * import XLPagerTabStrip
   * buttonBarView, pagerTabeController에 child controller 삽입 시켜줌!
-
+* TabMan도 있다
+  
 * Custom Hamburger Menu 
   * import SWRevealViewController.h 
+
+---
+
+### NotificationCenter
+
+**“특정 객체가 `NotificationCenter`에 등록된 `Event`를 발생시키면 해당 `Event`를 처리할 것이라고 등록된 `Observer`들이 `Event`에 대한 행동을 취하는 것이`NotificationCenter`가 동작하는 방식. 이렇게 특정 객체가 `Event`를 발생시키는 것을 `Post`라고 함.”\**
+
+* Post
+
+```swift
+NotificationCenter.default.post(name: Notification.Name(rawValue: "PostButton"), object: nil)
+// 이벤트를 발생시키는 코드를 작성
+// 버튼이 눌리면 NotificationCenter에 PostButton이라는 Event 등록하고 이를 발생시킨다 라는 의미.
+```
+
+* Observer 객체 작성
+
+```swift
+ //addObserver
+NotificationCenter.default.addObserver(self,selector: #selector(HomeinteractionObserve),
+name: NSNotification.Name(rawValue: "PostButton"),object: nil)
+// 이 객체(self)를 PostButton이라는 이름(name)의 Event가 발생했을 때 행동을 취하는 객체로 등록할 것인데 (NotificationCenter.default.addObserver), 
+// PostButton이 발생하면 HomeinteractionObserve 함수가 실행되는 것입니다.
+```
+
