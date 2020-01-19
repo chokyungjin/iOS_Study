@@ -810,3 +810,36 @@ name: NSNotification.Name(rawValue: "PostButton"),object: nil)
 // PostButton이 발생하면 HomeinteractionObserve 함수가 실행되는 것입니다.
 ```
 
+---
+
+### APP 생명주기
+
+**application:willFinishLaunchingWithOptions**
+
+시작 프로세스가 초기화되면 호출되는 메소드이다. 이 메소드는 앱에서 어떤 코드보다 가장 먼저 실행되는 기회를 갖는다.
+
+**application:didFinishLauchingWithOptions**
+
+시작 프로세스가 거의 완료되면 호출되는 메소드이다. 앱 창에 표시되기 직전에 호출되는 메소드이기때문에 인터페이스를 준비하고 최종 조정을 할 수 있는 마지막 기회이다.
+
+**applicationDidBecomeActive**
+
+앱이 활성상태가 되면 앱 델리게이트는 **applicationDidBecomeActive** 메소드를 통해 콜백 노티피케이션 메시지를 받을 것이다.
+
+또한 이 메소드는 이전의 비활성(inactive) 상태에서 활성상태로 돌아올때마다(전화나 SMS에서 돌아올때마다) 호출된다.
+
+**applicationWithResignActive**
+
+**applicationWillResignActive** 메소드가 호출되는데는 여러 조건들이 있다. 임시적인 이벤트(핸트폰 전화같은)가 일어날때마다 메소드가 호출된다. 또한 iOS앱을 "끈다(quitting)"는 말은 프로세스를 죽인다는 뜻이 아니라 앱을 백그라운드(background)로 보낸다는 뜻임에 주의하자.
+
+**applicationDidEnterBackgroud**
+
+이 메소드는 iOS 앱이 동작하고 있지만 더이상 포그라운드(foreground)에 있지 않을때 호출된다. 다른말로는 사용자 인터페이스가 현재 보여지고 있지 않다는 뜻이다. 애플의 [UIApplicationDelegate Protocol Reference](http://developer.apple.com/library/ios/#documentation/uikit/reference/UIApplicationDelegate_Protocol/Reference/Reference.html)에따르면 앱은 작업을 실행하고 리턴하기위해 대략 5초정도 가지고 있는다. 이 메소드가 5초안에 나타나지 않았다면 앱은 죽은 것이다.
+
+**applicationWillEnterForeground**
+
+이 메소드는 앱이 백그라운드에서 포그라운드로 넘어갈 준비가 되었을때 호출된다. 그러나 앱이 **applicationDidBecomeActive** 메소드가 호출되지 않은채로 활성 상태로 넘어가지 않는다. 이 메소드는 앱이 활성상태로 오기 전에 이전 실행 상태로 다시 세팅할 수 있는 기회를 준다.
+
+**applicationWillTerminate**
+
+이 메소드는 종료 이벤트가 발생했을때 알려주는 어플리케이션 델리게이트이다. 홈버튼을 눌러서 앱일 끈다. iOS를 강제로 종료하거나 기기를 끄게되면 **applicationWillTerminate** 메소드가 호출된다. 이것은 앱 구성, 설정, 사용자 선택을 저장할 수 있는 기회를 제공해준다.
