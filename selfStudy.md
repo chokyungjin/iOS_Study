@@ -843,6 +843,3 @@ name: NSNotification.Name(rawValue: "PostButton"),object: nil)
 **applicationWillTerminate**
 
 이 메소드는 종료 이벤트가 발생했을때 알려주는 어플리케이션 델리게이트이다. 홈버튼을 눌러서 앱일 끈다. iOS를 강제로 종료하거나 기기를 끄게되면 **applicationWillTerminate** 메소드가 호출된다. 이것은 앱 구성, 설정, 사용자 선택을 저장할 수 있는 기회를 제공해준다.
-
----
-
