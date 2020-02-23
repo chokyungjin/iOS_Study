@@ -1,6 +1,6 @@
 
 
-## iOS selfStudy
+## iOS self_Study
 
 ------
 
@@ -62,7 +62,7 @@ UInfo.0 , UInfo.1 ...이런식으로 사용가능하다
 
 ex) let fn1 = foo(base: 5)
 
-> ##### 함수를 호출할때 함수의 이름 다음에 함수 호출 연살자를 붙여야 했으나, 굳이 함수의 이름이 아니더라도 함수가 할당된 변수라면 그 변수에 함수 호출연산자() 를 붙여서 함수를 호출할 수 있다.
+> ##### 함수를 호출할때 함수의 이름 다음에 함수 호출 연살자를 붙여야 했으나, 굳이 함수의 이름이 아니더라도 함수가 할당된 변수라면 그 변수에 함수 호출연산자(.) 를 붙여서 함수를 호출할 수 있다.
 
 함수는 어차피 어떤값을 입력받는지와 어떤 값을 반환하는지 뿐이기 때문에 (인자 타입1, 인자 타입2) -> 반환 타입 이런 식으로 축약할 수 있다!!!! 단 아무것도 반환하지 않는 함수일 경우, Void라고 명시해야한다. void는 빈 튜플 타입을 나타내는 값으로 타입 얼리어스로 정의된 단어이다.
 
@@ -78,6 +78,22 @@ ex) let fn1 = foo(base: 5)
 3. 클로저 표현식
 
 클로저 표현식은 func 키워드 함수명을 제외한 나머지 부분만 작성하는 경량 문법을 사용한다.
+
+#### [weak self]
+
+* self 사용시 retain count를 증가시키게 되는데 closure가 self를 해제하여 retain count를 낮춰준다면 문제없지만, 다른 클래스 프로퍼티에 붙잡혀 있다면 문제가 발생
+* closure는 self가 해제 될 때까지, self는 closure가 해제될 때까지 기다리는 강한 참조 cycle 상황을 만듦.
+* closure의 선언부에 `[weak self] param in`을 명시해주고 self가 사용되는 곳에 self를 **optional**로 사용해주면 strong reference cycle 상황을 피해 갈 수 있게 된다. 
+* strong reference cycle이 발생하는지 사전에 알기 어렵기 때문에 만약 closure 내부에서 self를 사용하게 된다면 `[weak self] param in`을 항상 먼저 명시해주는 습관을 기르면 더 좋지 않을까 싶다.
+
+```swift
+disposable = producer.startWithNext { [weak self] number in 
+                                     self?.total += number 
+                                     print(self?.total) 
+                                    }
+```
+
+
 
 ------
 
@@ -843,3 +859,6 @@ name: NSNotification.Name(rawValue: "PostButton"),object: nil)
 **applicationWillTerminate**
 
 이 메소드는 종료 이벤트가 발생했을때 알려주는 어플리케이션 델리게이트이다. 홈버튼을 눌러서 앱일 끈다. iOS를 강제로 종료하거나 기기를 끄게되면 **applicationWillTerminate** 메소드가 호출된다. 이것은 앱 구성, 설정, 사용자 선택을 저장할 수 있는 기회를 제공해준다.
+
+---
+
